@@ -10,6 +10,9 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var scoreNumber = 0
+    let scoreLabel = SKLabelNode()
+    
     //game area
     let gameArea: CGRect
     
@@ -34,48 +37,61 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
+        //first target
+        let target = SKSpriteNode(imageNamed: "Target1")
+        target.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        target.zPosition = 2
+        target.name = "targetObject"
+        self.addChild(target)
         
-//        let background = SKSpriteNode(imageNamed: "DiscsBackground.png")
-//        background.size = self.size
-//        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-//        background.zPosition = 0
-//        self.addChild(background)
-        
-        //first disc
-        let disc = SKSpriteNode(imageNamed: "Disc1")
-        disc.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        disc.zPosition = 2
-        disc.name = "discObject"
-        self.addChild(disc)
-        
+        //score
+        scoreLabel.fontSize = 250
+        scoreLabel.text = "0"
+        scoreLabel.zPosition = 1
+        scoreLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.85)
+        self.addChild(scoreLabel)
     }
     
-    //spawn new disc
-    func spawnNewDisc(){
-        var randomImageNumber = arc4random()%4
+    //spawn new target
+    func spawnNewTarget(){
+        var randomImageNumber = arc4random()%3
         randomImageNumber += 1
         
-        let disc = SKSpriteNode(imageNamed: "Disc\(randomImageNumber)")
-        disc.zPosition = 2
-        disc.name = "discObject"
+        let target = SKSpriteNode(imageNamed: "Target\(randomImageNumber)")
+        target.zPosition = 2
+        target.name = "targetObject"
         
-        let randomX = random(min: gameArea.minX + disc.size.width/2, max: gameArea.maxX - disc.size.width/2)
-        let randomY = random(min: gameArea.minY + disc.size.height/2, max: gameArea.maxY - disc.size.height/2)
+        let randomX = random(min: gameArea.minX + target.size.width/2, max: gameArea.maxX - target.size.width/2)
+        let randomY = random(min: gameArea.minY + target.size.height/2, max: gameArea.maxY - target.size.height/2)
         
-        disc.position = CGPoint(x: randomX, y: randomY)
-        self.addChild(disc)
+        target.position = CGPoint(x: randomX, y: randomY)
+        self.addChild(target)
     }
     
-    //touch discs
+    //touch targets
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches{
             let positionOfTouch = touch.location(in: self)
             let tappedNode = atPoint(positionOfTouch)
             let nameOfTappedNode = tappedNode.name
             
-            if nameOfTappedNode == "discObject"{
-                tappedNode.removeFromParent()
-                spawnNewDisc()
+            if nameOfTappedNode == "targetObject"{
+                tappedNode.name = ""
+                tappedNode.run(SKAction.sequence([
+                    SKAction.fadeOut(withDuration: 0.1),
+                    SKAction.removeFromParent()
+                ]))
+                
+                spawnNewTarget()
+                
+                //update score
+                scoreNumber += 1
+                scoreLabel.text = "\(scoreNumber)"
+                
+                //new levels
+                if scoreNumber % 15 == 0{
+                    spawnNewTarget()
+                }
             }
         }
     }
