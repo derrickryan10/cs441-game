@@ -8,9 +8,10 @@
 import SpriteKit
 import GameplayKit
 
+var scoreNumber = 0
+
 class GameScene: SKScene {
     
-    var scoreNumber = 0
     let scoreLabel = SKLabelNode()
     
     //game area
@@ -37,6 +38,9 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
+        
+        scoreNumber = 0
+        
         //first target
         let target = SKSpriteNode(imageNamed: "Target1")
         target.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
@@ -66,6 +70,20 @@ class GameScene: SKScene {
         
         target.position = CGPoint(x: randomX, y: randomY)
         self.addChild(target)
+        
+        //shrink
+        target.run(SKAction.sequence([
+            SKAction.scale(to: 0, duration: 3),
+            SKAction.run(runGameOver)
+        ]))
+    }
+    
+    //go to game over scene
+    func runGameOver(){
+        let sceneToMoveTo = GameOverScene(size: self.size)
+        sceneToMoveTo.scaleMode = self.scaleMode
+        let sceneTransition = SKTransition.fade(withDuration: 0.2)
+        self.view!.presentScene(sceneToMoveTo, transition: sceneTransition)
     }
     
     //touch targets
@@ -77,6 +95,7 @@ class GameScene: SKScene {
             
             if nameOfTappedNode == "targetObject"{
                 tappedNode.name = ""
+                tappedNode.removeAllActions()
                 tappedNode.run(SKAction.sequence([
                     SKAction.fadeOut(withDuration: 0.1),
                     SKAction.removeFromParent()
