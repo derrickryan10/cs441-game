@@ -18,7 +18,7 @@
 		496370302615118D00220AB8 /* Target2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4963702D2615118D00220AB8 /* Target2.png */; };
 		4989B0A7260C172800B10618 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989B0A6260C172800B10618 /* MenuScene.swift */; };
 		4989B0AA260C177500B10618 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4989B0A9260C177500B10618 /* GameOverScene.swift */; };
-		4989B0B6260C1B7A00B10618 /* DiscsBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 4989B0B5260C1B7A00B10618 /* DiscsBackgroud.png */; };
+		49B62CE6261B550D00EEF73A /* bluebg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 49B62CE5261B550D00EEF73A /* bluebg.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		4963702D2615118D00220AB8 /* Target2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Target2.png; sourceTree = "<group>"; };
 		4989B0A6260C172800B10618 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		4989B0A9260C177500B10618 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
-		4989B0B5260C1B7A00B10618 /* DiscsBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DiscsBackgroud.png; sourceTree = "<group>"; };
+		49B62CE5261B550D00EEF73A /* bluebg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bluebg.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 				49235A8E260AB98600030115 /* GameScene.swift */,
 				49235A90260AB98600030115 /* GameViewController.swift */,
 				49235A92260AB98600030115 /* Main.storyboard */,
-				4989B0B5260C1B7A00B10618 /* DiscsBackgroud.png */,
+				49B62CE5261B550D00EEF73A /* bluebg.jpeg */,
 				4963702C2615118D00220AB8 /* Target1.png */,
 				4963702D2615118D00220AB8 /* Target2.png */,
 				4963702B2615118D00220AB8 /* Target3.png */,
@@ -142,9 +142,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B62CE6261B550D00EEF73A /* bluebg.jpeg in Resources */,
 				4963702F2615118D00220AB8 /* Target1.png in Resources */,
 				4963702E2615118D00220AB8 /* Target3.png in Resources */,
-				4989B0B6260C1B7A00B10618 /* DiscsBackgroud.png in Resources */,
 				49235A94260AB98600030115 /* Main.storyboard in Resources */,
 				49235A96260AB98900030115 /* Assets.xcassets in Resources */,
 				496370302615118D00220AB8 /* Target2.png in Resources */,

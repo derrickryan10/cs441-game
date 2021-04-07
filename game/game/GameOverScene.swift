@@ -10,28 +10,30 @@ import SpriteKit
 
 class GameOverScene: SKScene{
     override func didMove(to view: SKView) {
-        //let background = SKSpriteNode(imageNamed: "DiscsBackground")
-        //background.size = self.size
-        //background.zPosition = 0
-        //background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        //self.addChild(background)
         
-        //let gameOverLabel = SKLabelNode(fontNamed: "Pusab")
-        let gameOverLabel = SKLabelNode()
-        gameOverLabel.text = "Game Over"
-        gameOverLabel.fontSize = 140
-        gameOverLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.75)
-        //gameOverLabel.fontColor = SKColor.white
+        //background
+        let background = SKSpriteNode(imageNamed: "bluebg.jpeg")
+        background.size = self.size
+        background.zPosition = 0
+        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        self.addChild(background)
+        
+        //title
+        let gameOverLabel = SKLabelNode(fontNamed: "Futura")
+        gameOverLabel.text = "GAME OVER"
+        gameOverLabel.fontSize = 180
+        gameOverLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.7)
+        gameOverLabel.fontColor = SKColor.white
         gameOverLabel.zPosition = 1
         self.addChild(gameOverLabel)
         
         //score
-        let finalScoreLabel = SKLabelNode()
+        let finalScoreLabel = SKLabelNode(fontNamed: "Futura")
         finalScoreLabel.text = "Score: \(scoreNumber)"
-        finalScoreLabel.fontSize = 70
-        finalScoreLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.6)
+        finalScoreLabel.fontSize = 80
+        finalScoreLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.55)
         finalScoreLabel.zPosition = 1
-        //finalScoreLabel.fontColor = SKColor.white
+        finalScoreLabel.fontColor = SKColor.white
         self.addChild(finalScoreLabel)
         
         //high score
@@ -45,29 +47,31 @@ class GameOverScene: SKScene{
         }
         
         //high score label
-        let highScoreLabel = SKLabelNode()
+        let highScoreLabel = SKLabelNode(fontNamed: "Futura")
         highScoreLabel.text = "High Score: \(highScoreNumber)"
-        highScoreLabel.fontSize = 70
-        //highScoreLabel.fontColor = SKColor.white
+        highScoreLabel.fontSize = 80
+        highScoreLabel.fontColor = SKColor.white
         highScoreLabel.zPosition = 1
-        highScoreLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        highScoreLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.45)
         self.addChild(highScoreLabel)
         
         //restart button
-        let restartLabel = SKLabelNode()
-        restartLabel.text = "Restart"
-        restartLabel.fontSize = 75
+        let restartLabel = SKLabelNode(fontNamed: "Futura")
+        restartLabel.text = "RESTART"
+        restartLabel.fontSize = 130
         restartLabel.zPosition = 1
-        restartLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.3)
+        restartLabel.fontColor = SKColor.white
+        restartLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.25)
         restartLabel.name = "restartButton"
         self.addChild(restartLabel)
         
         //exit button
-        let exitLabel = SKLabelNode()
-        exitLabel.text = "Exit"
-        exitLabel.fontSize = 75
+        let exitLabel = SKLabelNode(fontNamed: "Futura")
+        exitLabel.text = "EXIT"
+        exitLabel.fontSize = 130
         exitLabel.zPosition = 1
-        exitLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.2)
+        exitLabel.fontColor = SKColor.white
+        exitLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.15)
         exitLabel.name = "exitButton"
         self.addChild(exitLabel)
     }

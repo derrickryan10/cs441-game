@@ -11,45 +11,58 @@ import SpriteKit
 class MenuScene: SKScene{
     
     override func didMove(to view: SKView) {
-        //let background = SKSpriteNode(imageNamed: "DiscsBackground")
-        //background.size = self.size
-        //background.zPosition = 0
-        //background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        //self.addChild(background)
         
-        //title
-        //let gameTitleLabel = SKLabelNode(fontNamed: "Pusab")
-        let gameTitleLabel = SKLabelNode()
-        gameTitleLabel.text = "Target Taps"
-        gameTitleLabel.fontSize = 140
+        //background
+        let background = SKSpriteNode(imageNamed: "bluebg.jpeg")
+        background.size = self.size
+        background.zPosition = 0
+        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        self.addChild(background)
+        
+        //target title
+        let gameTitleLabel = SKLabelNode(fontNamed: "Futura")
+        gameTitleLabel.text = "TARGET"
+        gameTitleLabel.fontSize = 200
         gameTitleLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.75)
-        //gameOverLabel.fontColor = SKColor.white
+        gameTitleLabel.fontColor = SKColor.white
         gameTitleLabel.zPosition = 1
         self.addChild(gameTitleLabel)
         
+        //tapper title
+        let gameTitleLabel2 = SKLabelNode(fontNamed: "Futura")
+        gameTitleLabel2.text = "TAPPER"
+        gameTitleLabel2.fontSize = 200
+        gameTitleLabel2.position = CGPoint(x: self.size.width/2, y: self.size.height*0.65)
+        gameTitleLabel2.fontColor = SKColor.white
+        gameTitleLabel2.zPosition = 1
+        self.addChild(gameTitleLabel2)
+        
         //start button
-        //let gameTitleLabel = SKLabelNode(fontNamed: "Pusab")
-        let startLabel = SKLabelNode()
-        startLabel.text = "Start"
-        startLabel.fontSize = 140
-        startLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.35)
-        //gameOverLabel.fontColor = SKColor.white
+        let startLabel = SKLabelNode(fontNamed: "Futura")
+        startLabel.text = "START"
+        startLabel.fontSize = 130
+        startLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.25)
+        startLabel.fontColor = SKColor.white
         startLabel.zPosition = 1
         startLabel.name = "startButton"
         self.addChild(startLabel)
         
         //instructions button
-        //let gameTitleLabel = SKLabelNode(fontNamed: "Pusab")
-        let instructionsLabel = SKLabelNode()
-        instructionsLabel.text = "Instructions"
-        instructionsLabel.fontSize = 140
-        instructionsLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.25)
-        //gameOverLabel.fontColor = SKColor.white
+        let instructionsLabel = SKLabelNode(fontNamed: "Futura")
+        instructionsLabel.text = "INSTRUCTIONS"
+        instructionsLabel.fontSize = 130
+        instructionsLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.15)
+        instructionsLabel.fontColor = SKColor.white
         instructionsLabel.zPosition = 1
         instructionsLabel.name = "instructionsButton"
         self.addChild(instructionsLabel)
         
-        
+        //target image
+        let target = SKSpriteNode(imageNamed: "Target2")
+        target.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        target.zPosition = 2
+        target.name = "targetObject"
+        self.addChild(target)
     }
     
     //button taps
@@ -59,13 +72,14 @@ class MenuScene: SKScene{
             let tappedNode = atPoint(pointOfTouch)
             let tappedNodeName = tappedNode.name
             
+            //no transition
             if tappedNodeName == "startButton"{
                 let sceneToMoveTo = GameScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
-                let sceneTransition = SKTransition.fade(withDuration: 0.2)
-                self.view!.presentScene(sceneToMoveTo, transition: sceneTransition)
+                self.view!.presentScene(sceneToMoveTo)
             }
             
+            //fade transition
             if tappedNodeName == "instructionsButton"{
                 let sceneToMoveTo = InstructionsScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
