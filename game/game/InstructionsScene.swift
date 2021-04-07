@@ -30,7 +30,7 @@ class InstructionsScene: SKScene{
         
         //description line 1
         let descriptionLabel = SKLabelNode(fontNamed: "Futura")
-        descriptionLabel.text = "Tap the targets before they dissapear"
+        descriptionLabel.text = "Tap the targets before they disappear"
         descriptionLabel.fontSize = 70
         descriptionLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.6)
         descriptionLabel.fontColor = SKColor.white
